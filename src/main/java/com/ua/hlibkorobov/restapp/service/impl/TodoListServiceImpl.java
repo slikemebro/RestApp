@@ -3,6 +3,7 @@ package com.ua.hlibkorobov.restapp.service.impl;
 import com.ua.hlibkorobov.restapp.dto.TodoListDto;
 import com.ua.hlibkorobov.restapp.entity.Status;
 import com.ua.hlibkorobov.restapp.entity.TodoList;
+import com.ua.hlibkorobov.restapp.exception.IllegalChangingOfStatusException;
 import com.ua.hlibkorobov.restapp.exception.TodoListNotFound;
 import com.ua.hlibkorobov.restapp.repository.TodoListRepository;
 import com.ua.hlibkorobov.restapp.service.TodoListService;
@@ -51,17 +52,29 @@ public class TodoListServiceImpl implements TodoListService {
 
     @Override
     public TodoList update(TodoList todoList) {
-        TodoList todoListForUpdate = findById(todoList.getId());
+        TodoList oldTodoList = findById(todoList.getId());
 
-        updateTodoList(todoList, todoListForUpdate);
+        updateTodoList(oldTodoList, todoList);
 
-        return repository.save(todoListForUpdate);
+        return repository.save(oldTodoList);
     }
 
-    private void updateTodoList(TodoList todoList, TodoList todoListForUpdate) {
-        todoListForUpdate.setTitle(todoList.getTitle());
-        todoListForUpdate.setDescription(todoList.getDescription());
-        todoListForUpdate.setStatus(todoList.getStatus());
+    private void updateTodoList(TodoList oldTodoList, TodoList todoList) {
+        if (todoList.getTitle() != null) {
+            oldTodoList.setTitle(todoList.getTitle());
+        }
+        if (todoList.getDescription() != null) {
+            oldTodoList.setDescription(todoList.getDescription());
+        }
+
+        if (todoList.getStatus() != null &&
+                todoList.getStatus().getValue() > oldTodoList.getStatus().getValue()){
+            oldTodoList.setStatus(todoList.getStatus());
+        }else {
+            throw new IllegalChangingOfStatusException(
+                    "You can't change status from " + oldTodoList.getStatus() +
+                    " to " + todoList.getStatus());
+        }
     }
 
     @Override
