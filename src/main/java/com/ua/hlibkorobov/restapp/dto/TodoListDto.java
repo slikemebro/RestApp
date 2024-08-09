@@ -15,6 +15,5 @@ public class TodoListDto {
 
     private String description;
 
-    private Status status;
 
 }

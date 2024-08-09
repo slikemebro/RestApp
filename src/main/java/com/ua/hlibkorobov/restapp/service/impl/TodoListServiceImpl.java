@@ -1,6 +1,7 @@
 package com.ua.hlibkorobov.restapp.service.impl;
 
 import com.ua.hlibkorobov.restapp.dto.TodoListDto;
+import com.ua.hlibkorobov.restapp.entity.Status;
 import com.ua.hlibkorobov.restapp.entity.TodoList;
 import com.ua.hlibkorobov.restapp.exception.TodoListNotFound;
 import com.ua.hlibkorobov.restapp.repository.TodoListRepository;
@@ -41,7 +42,7 @@ public class TodoListServiceImpl implements TodoListService {
         TodoList todoList = new TodoList();
 
         todoList.setTitle(todoListDto.getTitle());
-        todoList.setStatus(todoListDto.getStatus());
+        todoList.setStatus(Status.CREATED);
         todoList.setDescription(todoListDto.getDescription());
         todoList.setCreatedDate(LocalDate.now());
 
