@@ -1,7 +1,7 @@
 package com.ua.hlibkorobov.restapp.service;
 
 import com.ua.hlibkorobov.restapp.dto.TodoListDto;
-import com.ua.hlibkorobov.restapp.entity.TodoList;
+import com.ua.hlibkorobov.restapp.model.TodoList;
 
 import java.util.List;
 

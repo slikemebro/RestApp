@@ -1,8 +1,8 @@
 package com.ua.hlibkorobov.restapp.service.impl;
 
 import com.ua.hlibkorobov.restapp.dto.TodoListDto;
-import com.ua.hlibkorobov.restapp.entity.Status;
-import com.ua.hlibkorobov.restapp.entity.TodoList;
+import com.ua.hlibkorobov.restapp.model.Status;
+import com.ua.hlibkorobov.restapp.model.TodoList;
 import com.ua.hlibkorobov.restapp.exception.IllegalChangingOfStatusException;
 import com.ua.hlibkorobov.restapp.exception.TodoListNotFound;
 import com.ua.hlibkorobov.restapp.repository.TodoListRepository;

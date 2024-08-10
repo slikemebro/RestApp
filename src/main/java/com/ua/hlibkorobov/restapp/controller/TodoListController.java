@@ -1,7 +1,7 @@
 package com.ua.hlibkorobov.restapp.controller;
 
 import com.ua.hlibkorobov.restapp.dto.TodoListDto;
-import com.ua.hlibkorobov.restapp.entity.TodoList;
+import com.ua.hlibkorobov.restapp.model.TodoList;
 import com.ua.hlibkorobov.restapp.service.TodoListService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

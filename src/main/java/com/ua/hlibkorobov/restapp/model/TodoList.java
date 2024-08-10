@@ -1,4 +1,4 @@
-package com.ua.hlibkorobov.restapp.entity;
+package com.ua.hlibkorobov.restapp.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
